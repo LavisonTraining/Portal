@@ -62,12 +62,21 @@ async function renderFromDoc(data){
   const startDate = data.StartDate?.toDate?.();
   document.getElementById("start-date").textContent = startDate ? startDate.toLocaleDateString("ar-EG") : "بدون تاريخ";
 
-  const links = data.Links || {};
-  // First link goes to the report page (project 2)
+  // Dynamic Link Tree (flexible keys)
+  const links = data.Links || data.links || {};
+  const cbt = links.CBT16 || links.cbt16 || null;
+  const finance = links.Finance || links.FinanceOverview || links.Overview || links.Track || null;
+  const attendanceTrack = links.Attendance || links.TrackAttendance || links.Track || null;
+
+  // First button goes to Page 2 (report)
   document.getElementById("report-link").href = `./report.html?id=${encodeURIComponent(traineeId)}`;
-  document.getElementById("CBT16-link").href = links.CBT16 || "#";
-  document.getElementById("track-link").href = links.Track || "#";
-  document.getElementById("Attendance-link").href = links.Attendance || "#";
+
+  const cbtEl = document.getElementById("CBT16-link");
+  const finEl = document.getElementById("finance-link");
+  const trackEl = document.getElementById("attendance-track-link");
+  if (cbt) { cbtEl.href = cbt; cbtEl.removeAttribute('aria-disabled'); } else { cbtEl.href = '#'; cbtEl.setAttribute('aria-disabled','true'); }
+  if (finance) { finEl.href = finance; finEl.removeAttribute('aria-disabled'); } else { finEl.href = '#'; finEl.setAttribute('aria-disabled','true'); }
+  if (attendanceTrack) { trackEl.href = attendanceTrack; trackEl.removeAttribute('aria-disabled'); } else { trackEl.href = '#'; trackEl.setAttribute('aria-disabled','true'); }
 }
 
 /* ===== PIN Gate ===== */

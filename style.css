@@ -1,0 +1,68 @@
+:root {
+  --bg: #f5f7f8;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --shadow: 0 6px 22px rgba(0,0,0,.08);
+  --primary: #2196f3;
+  --success: #16a34a;
+  --danger: #ef4444;
+}
+
+html, body { height: 100%; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Kufi Arabic", Arial, sans-serif;
+  color: var(--text);
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  direction: rtl;
+}
+
+/* === Restored Page 1 background (soft gradient) === */
+.page-index {
+  background: radial-gradient(1000px 600px at 10% -10%, #e7f3f1 0%, #f7fbfb 50%, #f5f7f8 100%);
+}
+/* Page 2 keeps neutral bg */
+.page-report { background: var(--bg); }
+
+.header { display:flex; align-items:center; gap:.75rem; margin-bottom: 1rem; }
+.logo { max-width: 120px; }
+.title { margin:0; font-size: clamp(1.25rem, 2vw, 1.75rem); }
+
+.card { background: var(--card); border-radius: 14px; padding: 1rem; box-shadow: var(--shadow); margin-bottom: 1rem; }
+.grid.two { display:grid; grid-template-columns: 1fr 1fr; gap:.75rem; }
+
+#trainee-section img, #trainee-summary img { max-width: 150px; border-radius: 10px; margin: .5rem 0 1rem; }
+
+.links { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.75rem; }
+
+.btn { border: none; border-radius: 10px; padding: .65rem 1rem; cursor: pointer; font-weight:600; }
+.link-btn { background:#104740; color:#fff; }
+.add-btn { background: var(--success); color:#fff; }
+.remove-btn { background: var(--danger); color:#fff; }
+.submit-btn { background: var(--primary); color:#fff; width:100%; margin-top: 1rem; }
+
+.block { background: #fff; padding: 1rem; border-radius: 10px; box-shadow: var(--shadow); margin-bottom: .75rem; position: relative; }
+.block .row { display:grid; grid-template-columns: 1fr 1fr; gap:.75rem; }
+.block .actions { display:flex; justify-content:flex-start; margin-top:.5rem; gap:.5rem; }
+
+label { display:block; margin-top:.5rem; font-weight:600; }
+select, input[type="date"], input[type="password"], input[type="text"] {
+  width:100%; padding:.6rem .7rem; margin-top:.25rem; border:1px solid #e5e7eb; border-radius:10px; font-size:1rem;
+}
+
+hr { border:none; height:1px; background:#e5e7eb; margin:1rem 0; }
+.muted { color: var(--muted); }
+.error { color: var(--danger); margin-top:.5rem; }
+.footer { text-align:center; margin-top:1rem; font-size:.9rem; }
+
+/* PIN Overlay */
+.overlay { position:fixed; inset:0; background: rgba(0,0,0,.4); display:none; align-items:center; justify-content:center; padding:1rem; z-index: 50; }
+.overlay.show { display:flex; }
+.overlay-card { background:#fff; color:#111; width:min(480px, 95%); border-radius:14px; box-shadow:var(--shadow); padding:1.25rem; text-align:center; }
+
+/* Responsive */
+@media (max-width: 640px){
+  .grid.two, .block .row { grid-template-columns: 1fr; }
+}

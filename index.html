@@ -2,12 +2,12 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>بوابة متدربي لافيزون</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./style.css" />
-    <script type="module" src="./main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js" defer></script>
   </head>
-  <body>
+  <body class="page page-index">
     <!-- PIN Modal -->
     <div id="pin-overlay" class="overlay show">
       <div class="overlay-card">
@@ -19,9 +19,9 @@
       </div>
     </div>
 
-    <!-- Header -->
+    <!-- Header / Logo -->
     <header class="header">
-      <img src="./logo.svg" alt="Lavison" class="logo" />
+      <img src="logo.svg" alt="Lavison" class="logo" />
       <h1 class="title">بوابة المتدربين</h1>
     </header>
 
@@ -35,14 +35,12 @@
         <p><strong>📞 الهاتف:</strong> <span id="phone"></span></p>
       </div>
 
-      <!-- Quick Links -->
+      <!-- Quick Links: 1) report page 2) dynamic link tree from Firestore -->
       <div class="links">
-        <!-- This leads to the report page (project 2) -->
         <a id="report-link" href="#" class="btn link-btn">📤 صفحة تسجيل الحضور</a>
-
         <a id="CBT16-link" href="#" target="_blank" class="btn link-btn">CBT16</a>
-        <a id="track-link" href="#" target="_blank" class="btn link-btn">نظرة مالية</a>
-        <a id="Attendance-link" href="#" target="_blank" class="btn link-btn">تتبع الحضور</a>
+        <a id="finance-link" href="#" target="_blank" class="btn link-btn">نظرة مالية</a>
+        <a id="attendance-track-link" href="#" target="_blank" class="btn link-btn">تتبع الحضور</a>
       </div>
     </section>
 
