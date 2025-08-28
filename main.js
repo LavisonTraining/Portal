@@ -1,0 +1,1 @@
+<same content as generated above for main_js>
