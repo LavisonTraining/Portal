@@ -1,1 +1,0 @@
-<same content as generated above for report_js>
