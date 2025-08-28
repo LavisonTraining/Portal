@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>تسجيل حضور المتدرب</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="Style.css" />
+    <script type="module" src="Report.js" defer></script>
+  </head>
+  <body>
+    <!-- PIN Modal (Page 2 only) -->
+    <div id="pin-overlay" class="overlay show">
+      <div class="overlay-card">
+        <h2>أدخل الرقم السري (PIN)</h2>
+        <p class="muted">يرجى إدخال الرقم السري الخاص بالمتدرب لفتح التسجيل.</p>
+        <input id="pin-input" type="password" inputmode="numeric" maxlength="6" placeholder="●●●●" />
+        <button id="pin-submit" class="btn submit-btn">تأكيد</button>
+        <p id="pin-error" class="error" hidden>الرقم السري غير صحيح. حاول مرة أخرى.</p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <img src="./logo.svg" alt="Lavison" class="logo" />
+      <h1 class="title">تسجيل حضور المتدرب</h1>
+    </header>
+
+    <!-- Trainee Summary -->
+    <section id="trainee-summary" class="card">
+      <h2 id="traineeName">جاري التحميل...</h2>
+      <img id="photo" src="" alt="صورة المتدرب" />
+      <div class="grid two">
+        <p><strong>📘 البرنامج:</strong> <span id="program"></span></p>
+        <p><strong>📞 الهاتف:</strong> <span id="phone"></span></p>
+      </div>
+    </section>
+
+    <!-- Attendance / Absence (hidden until PIN passes) -->
+    <section id="report-section" class="card" style="display:none;">
+      <h3>📘 أضف حضور فقرات</h3>
+      <div id="attendanceContainer"></div>
+      <button class="btn add-btn" id="addAttendanceBtn">➕ أضف مدرب</button>
+
+      <hr />
+
+      <h3>🚫 أضف غياب فقرة</h3>
+      <div id="absenceContainer"></div>
+      <button class="btn add-btn" id="addAbsenceBtn">➕ أضف غياب</button>
+
+      <button id="submitBtn" class="btn submit-btn" disabled>📤 إرسال التقرير</button>
+    </section>
+
+    <footer class="footer muted">Lavison Training • جميع الحقوق محفوظة</footer>
+  </body>
+</html>
