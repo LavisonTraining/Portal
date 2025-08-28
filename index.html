@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>بوابة متدربي لافيزون</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./main.js" defer></script>
+  </head>
+  <body>
+    <!-- PIN Modal -->
+    <div id="pin-overlay" class="overlay show">
+      <div class="overlay-card">
+        <h2>أدخل الرقم السري (PIN)</h2>
+        <p class="muted">يرجى إدخال الرقم السري الخاص بالمتدرب لفتح الصفحة.</p>
+        <input id="pin-input" type="password" inputmode="numeric" maxlength="6" placeholder="●●●●" />
+        <button id="pin-submit" class="btn submit-btn">تأكيد</button>
+        <p id="pin-error" class="error" hidden>الرقم السري غير صحيح. حاول مرة أخرى.</p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <img src="./logo.svg" alt="Lavison" class="logo" />
+      <h1 class="title">بوابة المتدربين</h1>
+    </header>
+
+    <!-- Trainee Card -->
+    <section id="trainee-section" class="card">
+      <h2 id="traineeName">جاري التحميل...</h2>
+      <img id="photo" src="" alt="صورة المتدرب" />
+      <div class="grid two">
+        <p><strong>📘 البرنامج:</strong> <span id="program"></span></p>
+        <p><strong>📅 تاريخ البداية:</strong> <span id="start-date"></span></p>
+        <p><strong>📞 الهاتف:</strong> <span id="phone"></span></p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="links">
+        <!-- This leads to the report page (project 2) -->
+        <a id="report-link" href="#" class="btn link-btn">📤 صفحة تسجيل الحضور</a>
+
+        <a id="CBT16-link" href="#" target="_blank" class="btn link-btn">CBT16</a>
+        <a id="track-link" href="#" target="_blank" class="btn link-btn">نظرة مالية</a>
+        <a id="Attendance-link" href="#" target="_blank" class="btn link-btn">تتبع الحضور</a>
+      </div>
+    </section>
+
+    <footer class="footer muted">Lavison Training • جميع الحقوق محفوظة</footer>
+  </body>
+</html>

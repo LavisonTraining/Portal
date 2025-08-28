@@ -1,0 +1,95 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+
+/* ===== Firebase Config ===== */
+const firebaseConfig = {
+  apiKey: "AIzaSyAhjkeSO42TCDdbd3ZTHcvfMFqF9LF-GNw",
+  authDomain: "trainee-pages.firebaseapp.com",
+  projectId: "trainee-pages",
+  storageBucket: "trainee-pages.appspot.com",
+  messagingSenderId: "515476183719",
+  appId: "1:515476183719:web:f58a4ed6647b6df035d982"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* ===== Elements / Params ===== */
+const traineeNameElem = document.getElementById("traineeName");
+const overlay = document.getElementById("pin-overlay");
+const pinInput = document.getElementById("pin-input");
+const pinSubmit = document.getElementById("pin-submit");
+const pinError = document.getElementById("pin-error");
+
+const params = new URLSearchParams(window.location.search);
+const traineeId = params.get("id");
+let traineeDoc = null;
+
+/* ===== Utilities ===== */
+async function sha256(text){
+  const enc = new TextEncoder().encode(text);
+  const buf = await crypto.subtle.digest("SHA-256", enc);
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,"0")).join("");
+}
+
+async function fetchTrainee(){
+  if (!traineeId){
+    traineeNameElem.textContent = "❌ لا يوجد معرّف متدرب في الرابط";
+    return null;
+  }
+  try {
+    const ref = doc(db, "Trainees", traineeId);
+    const snap = await getDoc(ref);
+    if (!snap.exists()){
+      traineeNameElem.textContent = "❌ المتدرب غير موجود";
+      return null;
+    }
+    return snap.data();
+  } catch(err){
+    console.error(err);
+    traineeNameElem.textContent = "❌ حدث خطأ في تحميل بيانات المتدرب";
+    return null;
+  }
+}
+
+async function renderFromDoc(data){
+  // Profile info & links
+  document.getElementById("traineeName").textContent = `اسم المتدرب: ${data.Name || "بدون اسم"}`;
+  document.getElementById("photo").src = data["Photo URL"] || "https://via.placeholder.com/150";
+  document.getElementById("program").textContent = data.Program || "بدون برنامج";
+  document.getElementById("phone").textContent = data.Phone || "بدون رقم";
+
+  const startDate = data.StartDate?.toDate?.();
+  document.getElementById("start-date").textContent = startDate ? startDate.toLocaleDateString("ar-EG") : "بدون تاريخ";
+
+  const links = data.Links || {};
+  // First link goes to the report page (project 2)
+  document.getElementById("report-link").href = `./report.html?id=${encodeURIComponent(traineeId)}`;
+  document.getElementById("CBT16-link").href = links.CBT16 || "#";
+  document.getElementById("track-link").href = links.Track || "#";
+  document.getElementById("Attendance-link").href = links.Attendance || "#";
+}
+
+/* ===== PIN Gate ===== */
+pinSubmit.addEventListener("click", async () => {
+  pinError.hidden = true;
+  const entered = (pinInput.value || "").trim();
+  if (!entered){ pinError.hidden = false; return; }
+
+  if (!traineeDoc){
+    traineeDoc = await fetchTrainee();
+    if (!traineeDoc) return;
+  }
+
+  const enteredHash = await sha256(entered);
+  if (String(traineeDoc.PINHash || "").toLowerCase() === enteredHash.toLowerCase()){
+    overlay.classList.remove("show");
+    await renderFromDoc(traineeDoc);
+  } else {
+    pinError.hidden = false;
+    pinInput.select();
+  }
+});
+
+// Allow Enter key
+pinInput?.addEventListener("keydown", (e) => { if (e.key === "Enter") pinSubmit.click(); });
