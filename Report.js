@@ -124,6 +124,7 @@ function buildAttendanceBlock(){
           <option value="اجتماع عائلات">اجتماع عائلات</option>
           <option value="دراسة حالة">دراسة حالة</option>
           <option value="محاضرة">محاضرة</option>
+          <option value="علاج شخصي">علاج شخصي</option>
         </select>
       </label>
       <label>📘 الفقرة:
@@ -138,6 +139,7 @@ function buildAttendanceBlock(){
           <option value="اجتماع العائلات">اجتماع العائلات</option>
           <option value="دراسة الحالة">دراسة الحالة</option>
           <option value="محاضرة">محاضرة</option>
+          <option value="علاج شخصي">علاج شخصي</option>
         </select>
       </label>
       <label>🔢 عدد الفقرات:
@@ -178,6 +180,7 @@ function buildAbsenceBlock(){
           <option value="اجتماع العائلات">اجتماع العائلات</option>
           <option value="دراسة الحالة">دراسة الحالة</option>
           <option value="محاضرة">محاضرة</option>
+          <option value="علاج شخصي">علاج شخصي</option>
         </select>
       </label>
       <label>🔢 عدد الفقرات:
