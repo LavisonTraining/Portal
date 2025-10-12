@@ -119,6 +119,8 @@ function buildAttendanceBlock(){
           <option value="أ. حازم سمير">أ. حازم سمير</option>
           <option value="أ. مصطفى إمام">أ. مصطفى إمام</option>
           <option value="أ. إسلام رمضان">أ. إسلام رمضان</option>
+          <option value="أ. دينا عمر">أ. دينا عمر</option>
+          <option value="أ. تيسير السيد">أ. تيسير السيد</option>
           <option value="أ. أشرف عبد الحميد">أ. أشرف عبد الحميد</option>
           <option value="أ. حسن">أ. حسن</option>
           <option value="اجتماع عائلات">اجتماع عائلات</option>
@@ -132,6 +134,7 @@ function buildAttendanceBlock(){
           <option value="">--اختر--</option>
           <option value="جروب جمعي إدمان">جروب جمعي إدمان</option>
           <option value="جروب جمعي تحدي">جروب جمعي تحدي</option>
+          <option value="جروب/جلسة لافيزون">جروب/جلسة لافيزون</option>
           <option value="جلسة فردية إدمان">جلسة فردية إدمان</option>
           <option value="جلسة فردية تحدي">جلسة فردية تحدي</option>
           <option value="إحياء الفكر والوجدان">إحياء الفكر والوجدان</option>
@@ -173,6 +176,7 @@ function buildAbsenceBlock(){
           <option value="">--اختر--</option>
           <option value="جروب جمعي إدمان">جروب جمعي إدمان</option>
           <option value="جروب جمعي تحدي">جروب جمعي تحدي</option>
+          <option value="جروب/جلسة جمعي لافيزون">جروب/جلسة لافيزون</option>
           <option value="جلسة فردية إدمان">جلسة فردية إدمان</option>
           <option value="جلسة فردية تحدي">جلسة فردية تحدي</option>
           <option value="إحياء الفكر والوجدان">إحياء الفكر والوجدان</option>
